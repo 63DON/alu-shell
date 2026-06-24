@@ -1,18 +1,2 @@
 #!/bin/bash
-n=0
-while IFS= read -r line
-do
-n=$((n + 1))
-if [ $((n % 2)) -eq 1 ]
-then
-printf '%s\n' "$line"
-fi
-done
-if [ -n "$line" ]
-then
-n=$((n + 1))
-if [ $((n % 2)) -eq 1 ]
-then
-printf '%s\n' "$line"
-fi
-fi
+paste - - | cut -f1
