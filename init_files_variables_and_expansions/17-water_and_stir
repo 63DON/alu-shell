@@ -1,8 +1,2 @@
 #!/bin/bash
-water_digits=$(echo "$WATER" | tr 'water' '01234')
-stir_digits=$(echo "$STIR" | tr 'stir.' '01234')
-water_dec=$((5#$water_digits))
-stir_dec=$((5#$stir_digits))
-sum=$((water_dec + stir_dec))
-result_digits=$(printf '%o' "$sum")
-echo "$result_digits" | tr '01234567' 'bestchol'
+echo "$(printf '%o' $((5#$(tr 'water' '01234' <<< "$WATER") + 5#$(tr 'stir.' '01234' <<< "$STIR"))))" | tr '01234567' 'bestchol'
