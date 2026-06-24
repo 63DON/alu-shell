@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script lists current directory contents after the first dash
+for f in *
+do
+  echo "${f#*-}"
+done
