@@ -1,2 +1,8 @@
 #!/bin/bash
-echo "obase=8;ibase=5;$(echo $WATER | tr 'water' '01234') + $(echo $STIR | tr 'stir.' '01234')" | bc | tr '01234567' 'bestchol'
+water_digits=$(echo "$WATER" | tr 'water' '01234')
+stir_digits=$(echo "$STIR" | tr 'stir.' '01234')
+water_dec=$((5#$water_digits))
+stir_dec=$((5#$stir_digits))
+sum=$((water_dec + stir_dec))
+result_digits=$(printf '%o' "$sum")
+echo "$result_digits" | tr '01234567' 'bestchol'
